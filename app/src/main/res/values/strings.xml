@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Сurrency Assistant</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="currency_assistant_ToolBar">Currency Assistant</string>
+    <string name="news_title">News</string>
+    <string name="into_to_crypto">Into to crypto</string>
+    <string name="crypto">CRYPTO</string>
+    <string name="btn_what_to_crypto">What to crypto?</string>
+    <string name="btn_HowtoStartTradingBitcoin">How to Start Trading Bitcoin?</string>
+    <string name="btn_3TradingStrategies">3 Trading Strategies</string>
+    <string name="ViewMore">view more</string>
+</resources>
