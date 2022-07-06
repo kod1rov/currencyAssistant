@@ -24,7 +24,9 @@
     <fragment
         android:id="@+id/tutorialFragment"
         android:name="com.devcraft.currencyassistant.presentation.ui.tutorial.TutorialFragment"
-        android:label="TutorialFragment" >
+        android:label="TutorialFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_right">
         <action
             android:id="@+id/action_tutorialFragment_to_mainFragment"
             app:destination="@id/mainFragment"

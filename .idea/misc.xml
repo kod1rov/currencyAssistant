@@ -50,6 +50,8 @@
         <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/item_news.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/item_post_more.xml" value="0.25" />
         <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2385" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.203125" />
+        <entry key="app/src/main/res/layout/currency_layout.xml" value="0.203125" />
       </map>
     </option>
   </component>

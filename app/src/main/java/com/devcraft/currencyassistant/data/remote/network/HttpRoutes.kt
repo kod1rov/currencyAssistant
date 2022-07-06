@@ -1,9 +1,11 @@
 package com.devcraft.currencyassistant.data.remote.network
 
+import com.devcraft.currencyassistant.BuildConfig
+
 object HttpRoutes {
 
     //News API
-    const val URL = "https://cryptopanic.com/api/v1/posts/"
+    const val URL = BuildConfig.URL_MAIN
     const val API_KEY = "0dca31500df91b4f3e5738fb7fc821cf729cbdb1"
     const val PARAM = "rising"
 

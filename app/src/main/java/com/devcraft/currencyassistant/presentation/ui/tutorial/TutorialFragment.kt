@@ -9,18 +9,21 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.devcraft.currencyassistant.R
+import com.devcraft.currencyassistant.app.OnBackPressed
 import com.devcraft.currencyassistant.constant.Constants
 import com.devcraft.currencyassistant.databinding.FragmentTutorialBinding
 
-class TutorialFragment : Fragment() {
+class TutorialFragment : Fragment(), OnBackPressed {
 
     private var _binding: FragmentTutorialBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var navigationController: NavController
     private val snapHelper: SnapHelper = PagerSnapHelper()
     private  var idTutorial: Int? = null
@@ -43,7 +46,6 @@ class TutorialFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navigationController = Navigation.findNavController(view)
         initViews()
-        onBackPress()
         initListeners()
     }
 
@@ -67,15 +69,15 @@ class TutorialFragment : Fragment() {
         }
     }
 
-    private fun onBackPress() {
-        val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    navigationController.navigate(
-                        R.id.action_tutorialFragment_to_mainFragment,null,null)
-                }
-            }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
+    override fun onBackPressed() {
+        navigationController.popBackStack()
+//        navigationController.navigate(
+//            R.id.action_tutorialFragment_to_mainFragment,null,null)
     }
 
 }

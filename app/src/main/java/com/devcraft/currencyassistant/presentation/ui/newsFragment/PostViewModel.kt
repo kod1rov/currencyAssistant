@@ -33,8 +33,8 @@ class PostViewModel @Inject constructor(
     private fun getPost() {
         viewModelScope.launch(Dispatchers.IO) {
             postDatabase.getPost().also { posts ->
-                _postLiveData.postValue(
-                    posts as MutableList<Post>) }
+                _postLiveData.postValue(posts as MutableList<Post>)
+            }
         }
     }
 

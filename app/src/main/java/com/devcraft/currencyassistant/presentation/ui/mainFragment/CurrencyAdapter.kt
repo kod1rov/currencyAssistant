@@ -5,11 +5,10 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.currencyassistant.R
 import com.devcraft.currencyassistant.data.remote.dto.CurrencyResponse
+import com.devcraft.currencyassistant.databinding.ItemCurrencyBinding
 
 class CurrencyAdapter : RecyclerView.Adapter<CurrencyAdapter.VH>() {
 
@@ -20,22 +19,21 @@ class CurrencyAdapter : RecyclerView.Adapter<CurrencyAdapter.VH>() {
             notifyDataSetChanged()
         }
 
-    inner class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val nameCurrency: TextView = itemView.findViewById(R.id.nameCurrency)
-        private val valueCurrency: TextView = itemView.findViewById(R.id.valueCurrency)
-        private val percentChange: TextView = itemView.findViewById(R.id.percentChange)
+        private val binding = ItemCurrencyBinding.bind(itemView)
 
         @SuppressLint("SetTextI18n")
         fun bind(data: CurrencyResponse.Data) {
-            itemView.run {
+            binding.run {
                 nameCurrency.text = "${data.name} (${data.symbol})"
                 valueCurrency.text = "$" + String.format("%.2f", data.priceUsd)
                 if (data.changePercent24Hr < 0.0) {
                     percentChange.text = String.format("%.2f", data.changePercent24Hr) + "%"
                     percentChange.setTextColor(Color.parseColor("#f80000"))
                 } else {
-                    percentChange.text = "+" + String.format("%.2f", data.changePercent24Hr) + "%"
+                    percentChange.text =
+                        "+" + String.format("%.2f", data.changePercent24Hr) + "%"
                     percentChange.setTextColor(Color.parseColor("#45B68D"))
                 }
             }

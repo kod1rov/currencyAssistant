@@ -5,6 +5,10 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdk 31
 
@@ -19,13 +23,18 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "URL_MAIN", apikeyProperties['URL_MAIN']
+        }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "URL_MAIN", apikeyProperties['URL_MAIN']
         }
         beta{
             minifyEnabled false
             applicationIdSuffix ".beta"
+            buildConfigField "String", "URL_MAIN", apikeyProperties['URL_MAIN']
         }
     }
     compileOptions {
