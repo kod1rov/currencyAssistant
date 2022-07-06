@@ -1,4 +1,4 @@
-package com.devcraft.data.entity
+package com.devcraft.currencyassistant.entities
 
 data class Tutorial(
     val titleTutorial: String,

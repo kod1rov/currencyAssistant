@@ -1,7 +1,7 @@
 package com.devcraft.currencyassistant.constant
 
 import com.devcraft.currencyassistant.R
-import com.devcraft.data.entity.Tutorial
+import com.devcraft.currencyassistant.entities.Tutorial
 
 object Constants {
 

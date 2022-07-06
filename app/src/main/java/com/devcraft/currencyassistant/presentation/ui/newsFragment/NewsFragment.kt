@@ -5,23 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devcraft.currencyassistant.R
-import com.devcraft.currencyassistant.data.remote.network.NetworkResult
 import com.devcraft.currencyassistant.databinding.FragmentPostsBinding
-import com.devcraft.currencyassistant.viewModels.PostViewModel
+import com.devcraft.currencyassistant.entities.Post
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class NewsFragment : Fragment() {
@@ -56,19 +49,10 @@ class NewsFragment : Fragment() {
     }
 
     private fun initStateListener() {
-        lifecycleScope.launch{
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
-                vm.state.collectLatest {
-                    when(val state = it){
-                        is NetworkResult.ApiError -> Toast.makeText(context,"Error", Toast.LENGTH_LONG).show()
-                        is NetworkResult.Success -> {
-                            if(state.data.results.isNotEmpty()){
-                                adapterNews.items = state.data.results
-                            }
-                        }
-                        else -> {}
-                    }
-                }
+        vm.postLiveData.observe(viewLifecycleOwner){
+            println(it)
+            if(it.isNotEmpty()){
+                adapterNews.items = it as MutableList<Post>
             }
         }
     }

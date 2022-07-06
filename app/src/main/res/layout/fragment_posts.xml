@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="@string/currency_assistant_ToolBar"
-            android:textSize="@dimen/_20ssp" />
+            android:textSize="@dimen/_20ssp"
+            android:layout_marginVertical="8dp"/>
 
     </RelativeLayout>
 
@@ -31,7 +32,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_arrow_forward"
+            android:background="@drawable/ic_back_btn"
             android:rotation="180" />
 
     </FrameLayout>

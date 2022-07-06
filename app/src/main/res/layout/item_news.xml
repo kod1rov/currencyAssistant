@@ -8,6 +8,7 @@
         android:id="@+id/title_news"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="2"
         android:paddingVertical="8dp"
         android:fontFamily="@font/ubuntu_regular"
         android:textSize="@dimen/_14ssp"

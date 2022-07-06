@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="bg_main_color">#FFBA01</color>
-    <color name="orange_0">#FFFFE800</color>
+    <color name="yellow">#FFFFE800</color>
     <color name="orange_2">#FFFFA701</color>
     <color name="orange_1">#FFFFBA01</color>
     <color name="yellow_0">#ffe499</color>

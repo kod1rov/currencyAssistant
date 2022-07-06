@@ -25,14 +25,31 @@
         <entry key="..\:/Users/daler/AndroidStudioProjects/urrencyAssistant/app/src/main/res/layout/item_news.xml" value="0.33" />
         <entry key="..\:/Users/daler/AndroidStudioProjects/urrencyAssistant/app/src/main/res/layout/item_tutorial.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/daler/AndroidStudioProjects/urrencyAssistant/app/src/main/res/layout/layout_news.xml" value="0.33" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2085" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable-v24/ic_launcher_foreground1.xml" value="0.2085" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable/bg_bottom_sheet_behavior.xml" value="0.2085" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable/bg_converter_btn.xml" value="0.2275" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable/ic__232.xml" value="0.2085" />
         <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable/ic_baseline_link_24.xml" value="0.178" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable/ic_bitcoin.xml" value="0.209" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable/ic_exchange.xml" value="0.2275" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2085" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2085" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable/ic_launcher_foreground1.xml" value="0.2085" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable/splash_screen.xml" value="0.2085" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/drawable/tumb.xml" value="0.2385" />
         <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/currency_layout.xml" value="0.365625" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/fragment_chart_crypto.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/fragment_main.xml" value="0.33" />
         <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/fragment_news.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/fragment_posts.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/fragment_tutorial.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/item_currency.xml" value="0.365625" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/item_nav_tutorial.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/item_news.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/layout/item_post_more.xml" value="0.25" />
+        <entry key="..\:/Users/daler/Documents/Resources/urrencyAssistant/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2385" />
       </map>
     </option>
   </component>

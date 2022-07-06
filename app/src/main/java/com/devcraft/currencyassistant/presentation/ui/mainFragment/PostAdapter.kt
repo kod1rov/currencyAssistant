@@ -8,10 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.currencyassistant.R
 import com.devcraft.currencyassistant.data.remote.dto.Results
+import com.devcraft.currencyassistant.entities.Post
 
 class PostAdapter : RecyclerView.Adapter<PostAdapter.NewsVH>(){
 
-    var items : MutableList<Results> = mutableListOf()
+    var items : MutableList<Post> = mutableListOf()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
@@ -34,7 +35,7 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.NewsVH>(){
         private val title: TextView = itemView.findViewById(R.id.title_news)
         private val bottomLine: View = itemView.findViewById(R.id.bottom_line_item)
 
-        fun bind(data: Results, position: Int) {
+        fun bind(data: Post, position: Int) {
             itemView.run {
                 title.text = data.title
 

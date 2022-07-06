@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.currencyassistant.R
-import com.devcraft.data.entity.Tutorial
+import com.devcraft.currencyassistant.entities.Tutorial
 
 class TutorialAdapter(
     private val items:List<Tutorial>
