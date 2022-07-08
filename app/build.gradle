@@ -24,17 +24,32 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "URL_MAIN", apikeyProperties['URL_MAIN']
+            buildConfigField "String", "URL_MAIN_NEWS", apikeyProperties['URL_MAIN_NEWS']
+            buildConfigField "String", "API_KEY_NEWS", apikeyProperties['API_KEY_NEWS']
+            buildConfigField "String", "PARAM_NEWS", apikeyProperties['PARAM_NEWS']
+
+            buildConfigField "String", "URL_MAIN_CURRENCY", apikeyProperties['URL_MAIN_CURRENCY']
+            buildConfigField "String", "API_KEY_CURRENCY", apikeyProperties['API_KEY_CURRENCY']
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "URL_MAIN", apikeyProperties['URL_MAIN']
+            buildConfigField "String", "URL_MAIN_NEWS", apikeyProperties['URL_MAIN_NEWS']
+            buildConfigField "String", "API_KEY_NEWS", apikeyProperties['API_KEY_NEWS']
+            buildConfigField "String", "PARAM_NEWS", apikeyProperties['PARAM_NEWS']
+
+            buildConfigField "String", "URL_MAIN_CURRENCY", apikeyProperties['URL_MAIN_CURRENCY']
+            buildConfigField "String", "API_KEY_CURRENCY", apikeyProperties['API_KEY_CURRENCY']
         }
         beta{
             minifyEnabled false
             applicationIdSuffix ".beta"
-            buildConfigField "String", "URL_MAIN", apikeyProperties['URL_MAIN']
+            buildConfigField "String", "URL_MAIN_NEWS", apikeyProperties['URL_MAIN_NEWS']
+            buildConfigField "String", "API_KEY_NEWS", apikeyProperties['API_KEY_NEWS']
+            buildConfigField "String", "PARAM_NEWS", apikeyProperties['PARAM_NEWS']
+
+            buildConfigField "String", "URL_MAIN_CURRENCY", apikeyProperties['URL_MAIN_CURRENCY']
+            buildConfigField "String", "API_KEY_CURRENCY", apikeyProperties['API_KEY_CURRENCY']
         }
     }
     compileOptions {

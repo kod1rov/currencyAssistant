@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.mainFragment
+package com.devcraft.currencyassistant.presentation.ui.main_fragment
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

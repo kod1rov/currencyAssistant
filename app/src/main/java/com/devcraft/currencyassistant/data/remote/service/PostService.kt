@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.data.remote
+package com.devcraft.currencyassistant.data.remote.service
 
 import com.devcraft.currencyassistant.data.remote.dto.PostResponse
 import com.devcraft.currencyassistant.data.remote.network.NetworkResult

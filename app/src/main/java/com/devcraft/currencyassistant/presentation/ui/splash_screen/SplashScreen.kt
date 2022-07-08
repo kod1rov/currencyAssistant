@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.shplashScreen
+package com.devcraft.currencyassistant.presentation.ui.splash_screen
 
 import android.annotation.SuppressLint
 import android.content.Intent

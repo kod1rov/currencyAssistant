@@ -1,6 +1,5 @@
-package com.devcraft.currencyassistant.app
+package com.devcraft.currencyassistant.utils.status
 
 interface OnBackPressed {
-
     fun onBackPressed()
 }

@@ -39,7 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_back_btn"
-                android:rotation="180" />
+                android:rotation="180"
+                tools:ignore="ContentDescription" />
 
         </FrameLayout>
 
@@ -49,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:fontFamily="@font/ubuntu_regular"
+            android:fontFamily="@font/ubuntu_bold"
             android:textSize="16sp"
             android:textColor="@color/black" />
 
@@ -65,7 +66,7 @@
                 android:id="@+id/valueCurrency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/ubuntu_regular"
+                android:fontFamily="@font/ubuntu_bold"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:textAlignment="viewEnd"/>
@@ -81,11 +82,31 @@
 
     </LinearLayout>
 
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/filterDropDownMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="textEnd"
+        android:paddingHorizontal="22dp"
+        android:layout_gravity="end"
+        android:spinnerMode="dropdown"
+        android:popupBackground="@color/bg_main_color"/>
+
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart"
         android:layout_width="match_parent"
-        android:layout_marginEnd="16dp"
         android:layout_weight="1"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"/>
+
+    <TextView
+        android:id="@+id/filterTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/ubuntu_regular"
+        android:textSize="12sp"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

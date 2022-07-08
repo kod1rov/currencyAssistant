@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.newsFragment
+package com.devcraft.currencyassistant.presentation.ui.news_fragment
 
 import android.annotation.SuppressLint
 import android.text.Html
@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.currencyassistant.R
-import com.devcraft.currencyassistant.data.remote.dto.Results
 import com.devcraft.currencyassistant.entities.Post
 
 @Suppress("DEPRECATION")

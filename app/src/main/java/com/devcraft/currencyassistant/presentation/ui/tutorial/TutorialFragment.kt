@@ -1,22 +1,19 @@
 package com.devcraft.currencyassistant.presentation.ui.tutorial
 
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
-import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.devcraft.currencyassistant.R
-import com.devcraft.currencyassistant.app.OnBackPressed
-import com.devcraft.currencyassistant.constant.Constants
+import com.devcraft.currencyassistant.utils.status.OnBackPressed
+import com.devcraft.currencyassistant.constant.ArticleContent
 import com.devcraft.currencyassistant.databinding.FragmentTutorialBinding
 
 class TutorialFragment : Fragment(), OnBackPressed {
@@ -26,7 +23,6 @@ class TutorialFragment : Fragment(), OnBackPressed {
 
     private lateinit var navigationController: NavController
     private val snapHelper: SnapHelper = PagerSnapHelper()
-    private  var idTutorial: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +34,6 @@ class TutorialFragment : Fragment(), OnBackPressed {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTutorialBinding.inflate(inflater, container, false)
-        idTutorial = arguments?.getInt("idTutorial")!!
         return binding.root
     }
 
@@ -50,22 +45,24 @@ class TutorialFragment : Fragment(), OnBackPressed {
     }
 
     private fun initViews() {
-        binding.rvTutorial.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvTutorial.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         snapHelper.attachToRecyclerView(binding.rvTutorial)
-        showTutorial(idTutorial)
+
+        showTutorial(arguments?.getInt(idArticle))
     }
 
     private fun initListeners() {
         binding.btnBack.setOnClickListener {
-            navigationController.navigate(R.id.action_tutorialFragment_to_mainFragment,null,null)
+            navigationController.navigate(R.id.action_tutorialFragment_to_mainFragment, null, null)
         }
     }
 
     private fun showTutorial(id: Int?) {
-        when(id) {
-            1 -> binding.rvTutorial.adapter = TutorialAdapter(Constants.tutorial1)
-            2 -> binding.rvTutorial.adapter = TutorialAdapter(Constants.tutorial2)
-            3 -> binding.rvTutorial.adapter = TutorialAdapter(Constants.tutorial3)
+        when (id) {
+            1 -> binding.rvTutorial.adapter = TutorialAdapter(ArticleContent(requireContext()).article1)
+            2 -> binding.rvTutorial.adapter = TutorialAdapter(ArticleContent(requireContext()).article2)
+            3 -> binding.rvTutorial.adapter = TutorialAdapter(ArticleContent(requireContext()).article3)
         }
     }
 
@@ -76,8 +73,9 @@ class TutorialFragment : Fragment(), OnBackPressed {
 
     override fun onBackPressed() {
         navigationController.popBackStack()
-//        navigationController.navigate(
-//            R.id.action_tutorialFragment_to_mainFragment,null,null)
     }
 
+    companion object {
+        const val idArticle: String = ""
+    }
 }

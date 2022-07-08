@@ -1,7 +1,7 @@
-package com.devcraft.currencyassistant.presentation.ui.newsFragment
+package com.devcraft.currencyassistant.presentation.ui.news_fragment
 
 import androidx.lifecycle.*
-import com.devcraft.currencyassistant.data.remote.PostServiceImpl
+import com.devcraft.currencyassistant.data.remote.impl.PostServiceImpl
 import com.devcraft.currencyassistant.data.remote.dto.PostResponse
 import com.devcraft.currencyassistant.data.remote.network.NetworkResult
 import com.devcraft.currencyassistant.domain.use_case.PostUseCase

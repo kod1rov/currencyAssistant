@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import com.devcraft.currencyassistant.app.OnBackPressed
+import com.devcraft.currencyassistant.utils.status.OnBackPressed
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

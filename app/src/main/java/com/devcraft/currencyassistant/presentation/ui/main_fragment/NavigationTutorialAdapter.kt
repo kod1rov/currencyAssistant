@@ -1,11 +1,11 @@
-package com.devcraft.currencyassistant.presentation.ui.mainFragment
+package com.devcraft.currencyassistant.presentation.ui.main_fragment
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.currencyassistant.R
+import com.devcraft.currencyassistant.databinding.ItemNavTutorialBinding
 
 class NavigationTutorialAdapter:
     RecyclerView.Adapter<NavigationTutorialAdapter.VH>(){
@@ -39,12 +39,12 @@ class NavigationTutorialAdapter:
         holder.bind(items[position])
     }
 
-    inner class VH(itemView: View, private val itemClick: OnClickListener) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
-        private val tvTutorial: TextView = itemView.findViewById(R.id.tutorial_tv)
+    class VH(itemView: View, private val itemClick: OnClickListener) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
+        private val binding = ItemNavTutorialBinding.bind(itemView)
 
         fun bind(item: Int){
-            itemView.run {
-                tvTutorial.text =  resources.getString(item)
+            binding.run {
+                tutorialTv.text =  itemView.resources.getString(item)
             }
         }
         init {
@@ -52,8 +52,8 @@ class NavigationTutorialAdapter:
         }
 
         override fun onClick(v: View?) {
-            if (adapterPosition != RecyclerView.NO_POSITION){
-                itemClick.onClick(adapterPosition+1)
+            if (bindingAdapterPosition != RecyclerView.NO_POSITION){
+                itemClick.onClick(bindingAdapterPosition +1)
             }
         }
     }

@@ -1,9 +1,9 @@
-package com.devcraft.currencyassistant.data.remote
+package com.devcraft.currencyassistant.data.remote.impl
 
+import com.devcraft.currencyassistant.BuildConfig
 import com.devcraft.currencyassistant.data.remote.dto.CurrencyResponse
-import com.devcraft.currencyassistant.data.remote.dto.PostResponse
-import com.devcraft.currencyassistant.data.remote.network.HttpRoutes
 import com.devcraft.currencyassistant.data.remote.network.NetworkResult
+import com.devcraft.currencyassistant.data.remote.service.CurrencyService
 import io.ktor.client.*
 import io.ktor.client.request.*
 import kotlinx.coroutines.Dispatchers
@@ -22,8 +22,8 @@ class CurrencyServiceImpl @Inject constructor(
     override suspend fun getDataCurrency(): Flow<NetworkResult<CurrencyResponse>> =
         flow<NetworkResult<CurrencyResponse>> {
             val query = client.get<CurrencyResponse> {
-                url(HttpRoutes.CURRENCY_URL)
-                parameter("api-key", HttpRoutes.API_CURRENCY_KEY)
+                url(BuildConfig.URL_MAIN_CURRENCY)
+                parameter("api-key", BuildConfig.API_KEY_CURRENCY)
             }
             emit(NetworkResult.Success(query))
         }.catch {

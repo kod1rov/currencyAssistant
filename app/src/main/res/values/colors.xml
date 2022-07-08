@@ -10,4 +10,6 @@
     <color name="teal_700">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="color_percent_down">#f80000</color>
+    <color name="color_percent_up">#45B68D</color>
 </resources>

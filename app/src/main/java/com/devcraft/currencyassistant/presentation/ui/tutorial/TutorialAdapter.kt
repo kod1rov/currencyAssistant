@@ -34,7 +34,7 @@ class TutorialAdapter(
         fun bind(item: Tutorial) {
             itemView.run {
                 titleTutorial.text = item.titleTutorial
-                imgTutorial.setImageResource(item.pictureTutorial)
+                imgTutorial.setImageDrawable(item.pictureTutorial)
                 descriptionTutorial.text = item.descriptionTutorial
             }
         }

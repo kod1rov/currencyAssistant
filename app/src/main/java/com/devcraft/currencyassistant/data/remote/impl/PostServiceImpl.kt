@@ -1,8 +1,9 @@
-package com.devcraft.currencyassistant.data.remote
+package com.devcraft.currencyassistant.data.remote.impl
 
+import com.devcraft.currencyassistant.BuildConfig
 import com.devcraft.currencyassistant.data.remote.dto.PostResponse
-import com.devcraft.currencyassistant.data.remote.network.HttpRoutes
 import com.devcraft.currencyassistant.data.remote.network.NetworkResult
+import com.devcraft.currencyassistant.data.remote.service.PostService
 import io.ktor.client.*
 import io.ktor.client.request.*
 import kotlinx.coroutines.Dispatchers
@@ -20,9 +21,9 @@ class PostServiceImpl @Inject constructor(
 
     override suspend fun getPost() : Flow<NetworkResult<PostResponse>> = flow<NetworkResult<PostResponse>>{
             val query = client.get<PostResponse> {
-                url(HttpRoutes.URL)
-                parameter("auth_token", HttpRoutes.API_KEY)
-                parameter("filter", HttpRoutes.PARAM)
+                url(BuildConfig.URL_MAIN_NEWS)
+                parameter("auth_token", BuildConfig.API_KEY_NEWS)
+                parameter("filter", BuildConfig.PARAM_NEWS)
             }
             emit(NetworkResult.Success(query))
         }.catch{

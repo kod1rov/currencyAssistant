@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_main_color"
-    tools:context="com.devcraft.currencyassistant.presentation.ui.mainFragment.MainFragment">
+    tools:context="com.devcraft.currencyassistant.presentation.ui.main_fragment.MainFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,8 +73,8 @@
                     android:layout_marginBottom="12dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:fontFamily="@font/ubuntu_regular"
                     android:foreground="?attr/selectableItemBackground"
+                    android:fontFamily="@font/ubuntu_regular"
                     android:text="@string/ViewMore"
                     android:textColor="@color/orange_color"
                     android:textSize="14sp" />
@@ -112,9 +112,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
                 app:cornerRadius="48dp"
                 android:text="@string/conversion"
                 android:textColor="@color/white"

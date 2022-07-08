@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.newsFragment
+package com.devcraft.currencyassistant.presentation.ui.news_fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -34,6 +34,10 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navigationController = Navigation.findNavController(view)
+        initViews()
+        onBackPress()
+        initListeners()
+        initStateListener()
     }
 
     override fun onCreateView(
@@ -41,10 +45,6 @@ class NewsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPostsBinding.inflate(inflater, container, false)
-        initViews()
-        onBackPress()
-        initListeners()
-        initStateListener()
         return binding.root
     }
 
@@ -81,5 +81,10 @@ class NewsFragment : Fragment() {
                 }
             }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
