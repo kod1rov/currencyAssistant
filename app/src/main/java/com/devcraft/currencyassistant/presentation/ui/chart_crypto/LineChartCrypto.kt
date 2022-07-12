@@ -9,7 +9,6 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import java.util.*
 
 class LineChartCrypto(private val lineChart: LineChart, private val ctx: Context) {
     private lateinit var lineDataSet: LineDataSet

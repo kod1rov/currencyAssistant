@@ -2,10 +2,13 @@ package com.devcraft.currencyassistant.presentation.ui.main_fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,15 +16,14 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devcraft.currencyassistant.R
-import com.devcraft.currencyassistant.data.remote.dto.DataCurrency
 import com.devcraft.currencyassistant.databinding.FragmentMainBinding
+import com.devcraft.currencyassistant.entities.Crypto
 import com.devcraft.currencyassistant.entities.Post
 import com.devcraft.currencyassistant.presentation.ui.chart_crypto.ChartCryptoFragment
 import com.devcraft.currencyassistant.presentation.ui.news_fragment.PostViewModel
 import com.devcraft.currencyassistant.presentation.ui.tutorial.TutorialFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -37,6 +39,7 @@ class MainFragment : Fragment() {
 
     private val adapterNews = PostAdapter()
     private val adapterCurrency = CurrencyAdapter()
+    private val listCrypto: MutableList<Crypto> = mutableListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,9 +49,12 @@ class MainFragment : Fragment() {
         initViews()
         initListeners()
 
-        currencyVM.currencyLiveData?.observe(viewLifecycleOwner) {
+        currencyVM.currencyLiveData.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
-                adapterCurrency.items = it
+                it.forEach { crypto ->
+                    listCrypto.add(crypto)
+                }
+                adapterCurrency.items = listCrypto
             }
         }
 
@@ -113,7 +119,7 @@ class MainFragment : Fragment() {
 
     private fun getPositionCurrency(adapter: CurrencyAdapter) {
         adapter.setOnItemClickListener(object : CurrencyAdapter.OnClickListener {
-            override fun onClick(dataC: DataCurrency) {
+            override fun onClick(dataC: Crypto) {
                 navigationController.navigate(
                     R.id.action_mainFragment_to_chartCryptoFragment,
                     bundleOf(
@@ -126,10 +132,41 @@ class MainFragment : Fragment() {
 
     private fun initListeners() {
         binding.run {
+
             btnViewMore.setOnClickListener {
                 navigationController.navigate(R.id.action_mainFragment_to_newsFragment)
             }
+
+            btnSortByPrice.setOnClickListener {
+                adapterCurrency.sortByPrice()
+            }
+
+            searchCrypto(fieldSearch)
+
+            btnConversion.setOnClickListener {
+                navigationController.navigate(R.id.action_mainFragment_to_conversionFragment)
+            }
         }
+    }
+
+    private fun searchCrypto(field: EditText) {
+        field.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val str = field.text
+                if (str?.length == 0) {
+                    adapterCurrency.items = listCrypto
+                } else {
+                    adapterCurrency.items = listCrypto.filter {
+                        it.name!!.startsWith(s.toString(), true) || it.name.contains(s.toString(), true)
+                    } as MutableList
+                }
+                adapterCurrency.notifyDataSetChanged()
+            }
+        })
     }
 
     private fun showBottomSheetDialog() {

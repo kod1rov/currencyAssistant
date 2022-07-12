@@ -14,11 +14,12 @@ import androidx.navigation.Navigation
 import com.devcraft.currencyassistant.R
 import com.devcraft.currencyassistant.data.remote.dto.DataHistory
 import com.devcraft.currencyassistant.databinding.FragmentChartCryptoBinding
+import com.devcraft.currencyassistant.utils.status.OnBackPressed
 import com.github.mikephil.charting.data.Entry
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ChartCryptoFragment : Fragment() {
+class ChartCryptoFragment : Fragment(), OnBackPressed {
 
     private var _binding: FragmentChartCryptoBinding? = null
     private val binding get() = _binding!!
@@ -119,8 +120,10 @@ class ChartCryptoFragment : Fragment() {
                                 getData(-9)
                                 filterTV.text = parent.getItemAtPosition(pos).toString()
                             }
-                            2 -> { getData(-30)
-                                filterTV.text = parent.getItemAtPosition(pos).toString() }
+                            2 -> {
+                                getData(-30)
+                                filterTV.text = parent.getItemAtPosition(pos).toString()
+                            }
                             3 -> {
                                 getData(-365)
                                 filterTV.text = parent.getItemAtPosition(pos).toString()
@@ -144,6 +147,10 @@ class ChartCryptoFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onBackPressed() {
+        navigationController.popBackStack()
     }
 
     companion object {

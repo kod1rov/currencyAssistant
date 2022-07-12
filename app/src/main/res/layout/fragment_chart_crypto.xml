@@ -26,6 +26,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal">
 
         <FrameLayout
@@ -50,8 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:fontFamily="@font/ubuntu_bold"
-            android:textSize="16sp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:textSize="22sp"
             android:textColor="@color/black" />
 
         <LinearLayout
@@ -66,8 +67,8 @@
                 android:id="@+id/valueCurrency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/ubuntu_bold"
-                android:textSize="16sp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:textSize="22sp"
                 android:textColor="@color/black"
                 android:textAlignment="viewEnd"/>
 

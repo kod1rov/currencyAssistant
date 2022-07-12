@@ -73,8 +73,8 @@
                     android:layout_marginBottom="12dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
                     android:fontFamily="@font/ubuntu_regular"
+                    android:foreground="?attr/selectableItemBackground"
                     android:text="@string/ViewMore"
                     android:textColor="@color/orange_color"
                     android:textSize="14sp" />
@@ -111,16 +111,16 @@
                 android:id="@+id/btnConversion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/orange_color"
+                android:fontFamily="@font/ubuntu_bold"
                 android:paddingVertical="10dp"
-                app:cornerRadius="48dp"
                 android:text="@string/conversion"
                 android:textColor="@color/white"
-                android:fontFamily="@font/ubuntu_bold"
                 android:textSize="22sp"
-                android:backgroundTint="@color/orange_color"
-                app:icon="@drawable/ic_exchange"
-                app:iconTint="@color/white"
-                app:iconGravity="textStart"/>
+                app:cornerRadius="48dp"
+                app:icon="@drawable/ic_btn_convert"
+                app:iconGravity="textStart"
+                app:iconTint="@color/white" />
 
         </FrameLayout>
 
@@ -146,6 +146,36 @@
                 android:layout_marginBottom="34dp"
                 android:background="@drawable/line_for_bottom_sheet"
                 tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/fieldSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/ubuntu_regular"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/btnSortByPrice"
+                    android:layout_width="20dp"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/ic_filter_by_price" />
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_crypto_list"

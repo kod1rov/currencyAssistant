@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.currencyassistant.R
-import com.devcraft.currencyassistant.data.remote.dto.DataCurrency
 import com.devcraft.currencyassistant.databinding.ItemCurrencyBinding
+import com.devcraft.currencyassistant.entities.Crypto
 
 class CurrencyAdapter : RecyclerView.Adapter<CurrencyAdapter.VH>() {
 
-    var items: MutableList<DataCurrency> = mutableListOf()
+    var items: MutableList<Crypto> = mutableListOf()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
@@ -22,7 +22,7 @@ class CurrencyAdapter : RecyclerView.Adapter<CurrencyAdapter.VH>() {
     private lateinit var listener: OnClickListener
 
     interface OnClickListener {
-        fun onClick(dataC: DataCurrency)
+        fun onClick(dataC: Crypto)
     }
 
     fun setOnItemClickListener(listener: OnClickListener) {
@@ -42,17 +42,24 @@ class CurrencyAdapter : RecyclerView.Adapter<CurrencyAdapter.VH>() {
 
     override fun getItemCount() = items.size
 
+    fun sortByPrice(){
+        items.sortByDescending{
+            it.priceUsd
+        }
+        notifyDataSetChanged()
+    }
+
     inner class VH(itemView: View, private val itemClick: OnClickListener) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         private val binding = ItemCurrencyBinding.bind(itemView)
 
         @SuppressLint("SetTextI18n")
-        fun bind(data: DataCurrency) {
+        fun bind(data: Crypto) {
             binding.run {
                 nameCurrency.text = "${data.name} (${data.symbol})"
                 valueCurrency.text = "$" + String.format("%.2f", data.priceUsd)
-                checkPercent(data.changePercent24Hr)
+                data.changePercent24Hr?.let { checkPercent(it) }
             }
         }
 

@@ -25,6 +25,11 @@
             app:destination="@id/chartCryptoFragment"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_mainFragment_to_conversionFragment"
+            app:destination="@id/conversionFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/tutorialFragment"
@@ -54,6 +59,17 @@
         android:label="ChartCryptoFragment" >
         <action
             android:id="@+id/action_chartCryptoFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/conversionFragment"
+        android:name="com.devcraft.currencyassistant.presentation.ui.conversion.ConversionFragment"
+        android:label="fragment_conversion"
+        tools:layout="@layout/fragment_conversion" >
+        <action
+            android:id="@+id/action_conversionFragment_to_mainFragment"
             app:destination="@id/mainFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_right" />

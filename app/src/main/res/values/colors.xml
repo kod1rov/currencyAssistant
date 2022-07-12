@@ -6,8 +6,8 @@
     <color name="orange_1">#FFFFBA01</color>
     <color name="yellow_0">#ffe499</color>
     <color name="orange_color">#FB4F14</color>
-    <color name="teal_200">#FFFFFFFF</color>
-    <color name="teal_700">#FFFFFFFF</color>
+    <color name="teal_200">#FB4F14</color>
+    <color name="teal_700">#FB4F14</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_percent_down">#f80000</color>

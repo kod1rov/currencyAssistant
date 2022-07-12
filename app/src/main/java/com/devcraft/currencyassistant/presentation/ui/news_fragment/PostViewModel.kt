@@ -1,8 +1,12 @@
 package com.devcraft.currencyassistant.presentation.ui.news_fragment
 
-import androidx.lifecycle.*
-import com.devcraft.currencyassistant.data.remote.impl.PostServiceImpl
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.devcraft.currencyassistant.data.remote.dto.PostResponse
+import com.devcraft.currencyassistant.data.remote.impl.PostServiceImpl
 import com.devcraft.currencyassistant.data.remote.network.NetworkResult
 import com.devcraft.currencyassistant.domain.use_case.PostUseCase
 import com.devcraft.currencyassistant.entities.Post
@@ -38,24 +42,28 @@ class PostViewModel @Inject constructor(
         }
     }
 
-    private suspend fun checkResult(it: NetworkResult<PostResponse>) {
-        when (it) {
+    private suspend fun checkResult(result: NetworkResult<PostResponse>) {
+        when (result) {
             is NetworkResult.ApiError -> {
-                println("ERROR - ${it.message}")
+                Log.d("API ERROR", result.message)
             }
             is NetworkResult.Success -> {
-                postDatabase.insertPost(it.data.results.map { post ->
-                    Post(
-                        id = post.id,
-                        domain = post.domain,
-                        title = post.title,
-                        published_at = post.published_at,
-                        url = post.url
-                    )
-                })
+                insertPostData(result)
             }
-            else -> { println("CLEAR") }
+            else -> { Log.d("CLEAR", "true") }
         }
+    }
+
+    private suspend fun insertPostData(response: NetworkResult.Success<PostResponse>) {
+        postDatabase.insertPost(response.data.results.map { post ->
+            Post(
+                id = post.id,
+                domain = post.domain,
+                title = post.title,
+                published_at = post.published_at,
+                url = post.url
+            )
+        })
     }
 }
 

@@ -25,7 +25,6 @@ data class Results(
     @SerializedName("created_at") var created_at: String? = null
 )
 
-
 data class Votes(
     @SerializedName("negative") var negative: Int? = null,
     @SerializedName("positive") var positive: Int? = null,
@@ -37,7 +36,6 @@ data class Votes(
     @SerializedName("saved") var saved: Int? = null,
     @SerializedName("comments") var comments: Int? = null
 )
-
 
 data class Source(
     @SerializedName("title") var title: String? = null,

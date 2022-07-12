@@ -2,8 +2,8 @@ package com.devcraft.currencyassistant.presentation.ui.splash_screen
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.devcraft.currencyassistant.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 

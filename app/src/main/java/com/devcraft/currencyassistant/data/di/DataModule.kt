@@ -2,12 +2,12 @@ package com.devcraft.currencyassistant.data.di
 
 import android.app.Application
 import androidx.room.Room
-import com.devcraft.currencyassistant.data.data_source.PostDatabase
+import com.devcraft.currencyassistant.data.data_source.CurrencyDatabase
+import com.devcraft.currencyassistant.data.data_source.repository.CryptoRepoImpl
 import com.devcraft.currencyassistant.data.data_source.repository.PostRepoImpl
+import com.devcraft.currencyassistant.domain.repository.CryptoRepo
 import com.devcraft.currencyassistant.domain.repository.PostRepo
-import com.devcraft.currencyassistant.domain.use_case.GetPost
-import com.devcraft.currencyassistant.domain.use_case.InsertPost
-import com.devcraft.currencyassistant.domain.use_case.PostUseCase
+import com.devcraft.currencyassistant.domain.use_case.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,21 +39,33 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun providePostDatabase(app: Application): PostDatabase = Room.databaseBuilder(
+    fun provideCryptoDatabase(app: Application): CurrencyDatabase = Room.databaseBuilder(
         app,
-        PostDatabase::class.java,
-        PostDatabase.DATABASE_NAME
+        CurrencyDatabase::class.java,
+        CurrencyDatabase.DATABASE_NAME
     ).build()
 
     @Provides
     @Singleton
-    fun providePostRepository(db: PostDatabase): PostRepo = PostRepoImpl(db.tradingDao)
+    fun providePostRepository(db: CurrencyDatabase): PostRepo = PostRepoImpl(db.appDao)
 
     @Provides
     @Singleton
-    fun provideTradingUseCases(repository: PostRepo): PostUseCase = PostUseCase(
+    fun provideNewsUseCases(repository: PostRepo): PostUseCase = PostUseCase(
         getPost = GetPost(repository),
         insertPost = InsertPost(repository)
     )
+
+    @Provides
+    @Singleton
+    fun provideCryptoRepository(db: CurrencyDatabase): CryptoRepo = CryptoRepoImpl(db.appDao)
+
+    @Provides
+    @Singleton
+    fun provideCryptoUseCases(repository: CryptoRepo): CryptoUseCase = CryptoUseCase(
+        getCryptoData = GetCrypto(repository),
+        insertCrypto = InsertCrypto(repository)
+    )
+
 }
 
