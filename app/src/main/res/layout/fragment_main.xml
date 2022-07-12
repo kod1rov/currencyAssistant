@@ -63,7 +63,6 @@
                     android:layout_height="wrap_content"
                     android:padding="16dp" />
 
-
                 <TextView
                     android:id="@+id/btnViewMore"
                     android:layout_width="wrap_content"
@@ -136,7 +135,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -166,14 +166,16 @@
                     android:fontFamily="@font/ubuntu_regular"
                     android:maxLines="1"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    tools:ignore="Autofill,LabelFor,TextFields" />
 
                 <ImageView
                     android:id="@+id/btnSortByPrice"
                     android:layout_width="20dp"
                     android:layout_height="14dp"
                     android:layout_marginStart="12dp"
-                    android:background="@drawable/ic_filter_by_price" />
+                    android:background="@drawable/ic_filter_by_price"
+                    tools:ignore="ContentDescription" />
 
             </LinearLayout>
 

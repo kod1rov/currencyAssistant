@@ -79,4 +79,7 @@
                     The traders will have to carefully time the market, which might be a little difficult due to the unpredictable nature of the crypto world. Executing trades at the right time will be very important when using this trading strategy. Performing trades manually will probably be limited, as anyone can make a mistake when performing trades. No human being can sit in front of a computer screen for days waiting for the right time to perform a trade. Automated trading through trading bots and automated trading platforms, like the official Bitcoin Rush, have proven to be very helpful and allows the traders to use the swing trading strategy successfully.\n\n
                     The trading strategies that we have talked about are just a few, very famous ones that anyone can use when trading cryptocurrencies. Please do not forget that there are several other strategies that you could use. It is important to choose the right strategy that meets all of your requirements and works for you.</string>
     <string name="price">Price</string>
+    <string name="btc">BTC</string>
+    <string name="eth">ETH</string>
+    <string name="startValueForFieldConvert">0</string>
 </resources>
