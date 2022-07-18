@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.currencyassistant.R
+import com.devcraft.currencyassistant.databinding.ItemTutorialBinding
 import com.devcraft.currencyassistant.entities.Tutorial
 
 class TutorialAdapter(
@@ -27,15 +28,13 @@ class TutorialAdapter(
     }
 
     inner class VH(itemView: View) : RecyclerView.ViewHolder(itemView){
-        private val titleTutorial: TextView = itemView.findViewById(R.id.tutorial_title)
-        private val imgTutorial: ImageView = itemView.findViewById(R.id.tutorial_image)
-        private val descriptionTutorial: TextView = itemView.findViewById(R.id.tutorial_content)
+        private val binding = ItemTutorialBinding.bind(itemView)
 
         fun bind(item: Tutorial) {
-            itemView.run {
-                titleTutorial.text = item.titleTutorial
-                imgTutorial.setImageDrawable(item.pictureTutorial)
-                descriptionTutorial.text = item.descriptionTutorial
+            binding.run {
+                tutorialTitle.text = item.titleTutorial
+                tutorialImage.setImageDrawable(item.pictureTutorial)
+                tutorialContent.text = item.descriptionTutorial
             }
         }
 

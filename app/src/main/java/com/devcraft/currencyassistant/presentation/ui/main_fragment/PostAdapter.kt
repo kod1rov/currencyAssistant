@@ -4,9 +4,9 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.currencyassistant.R
+import com.devcraft.currencyassistant.databinding.ItemPostMoreBinding
 import com.devcraft.currencyassistant.entities.Post
 
 class PostAdapter : RecyclerView.Adapter<PostAdapter.NewsVH>() {
@@ -33,13 +33,12 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.NewsVH>() {
     }
 
     inner class NewsVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val title: TextView = itemView.findViewById(R.id.title_news)
-        private val bottomLine: View = itemView.findViewById(R.id.bottom_line_item)
+        private val binding = ItemPostMoreBinding.bind(itemView)
 
         fun bind(data: Post, position: Int) {
-            itemView.run {
-                title.text = data.title
-                if (position == 2) bottomLine.background = null
+            binding.run {
+                titleNews.text = data.title
+                if (position == 2) bottomLineItem.background = null
             }
         }
 
