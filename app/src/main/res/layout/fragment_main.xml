@@ -139,12 +139,12 @@
             tools:ignore="UselessParent">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="4dp"
+                android:layout_width="62dp"
+                android:layout_height="3dp"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="34dp"
-                android:background="@drawable/line_for_bottom_sheet"
+                android:background="@drawable/line_bottom_sheet"
                 tools:ignore="ContentDescription" />
 
             <LinearLayout

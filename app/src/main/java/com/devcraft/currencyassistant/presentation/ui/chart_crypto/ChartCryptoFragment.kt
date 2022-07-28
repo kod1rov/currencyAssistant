@@ -57,17 +57,17 @@ class ChartCryptoFragment : Fragment(), OnBackPressed {
             valueCurrency.text = "$" + String.format("%.2f", list[2].toDouble())
 
             if (list[3].toDouble() < 0.0) {
-                binding.percentChange.text = String.format("%.2f", list[3].toDouble()) + "%"
-                binding.percentChange.setTextColor(
+                percentChange.text = String.format("%.2f", list[3].toDouble()) + "%"
+                percentChange.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
                         R.color.color_percent_down
                     )
                 )
             } else {
-                binding.percentChange.text =
+                percentChange.text =
                     "+" + String.format("%.2f", list[3].toDouble()) + "%"
-                binding.percentChange.setTextColor(
+                percentChange.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
                         R.color.color_percent_up
@@ -99,9 +99,7 @@ class ChartCryptoFragment : Fragment(), OnBackPressed {
     private fun initListeners() {
         binding.run {
             btnBack.setOnClickListener {
-                navigationController.navigate(
-                    R.id.action_chartCryptoFragment_to_mainFragment
-                )
+                navigationController.popBackStack()
             }
             filterDropDownMenu.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
@@ -130,7 +128,6 @@ class ChartCryptoFragment : Fragment(), OnBackPressed {
                             }
                         }
                     }
-
                     override fun onNothingSelected(parent: AdapterView<*>?) {}
                 }
         }

@@ -18,10 +18,11 @@ import com.devcraft.currencyassistant.R
 import com.devcraft.currencyassistant.databinding.FragmentConversionBinding
 import com.devcraft.currencyassistant.entities.Crypto
 import com.devcraft.currencyassistant.presentation.ui.main_fragment.MainViewModel
+import com.devcraft.currencyassistant.utils.status.OnBackPressed
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ConversionFragment : Fragment() {
+class ConversionFragment : Fragment(), OnBackPressed {
 
     private var _binding: FragmentConversionBinding? = null
     private val binding get() = _binding!!
@@ -70,9 +71,8 @@ class ConversionFragment : Fragment() {
 
     private fun initListeners() {
         binding.run {
-
             btnBack.setOnClickListener {
-                navigationController.navigate(R.id.action_conversionFragment_to_mainFragment)
+                navigationController.popBackStack()
             }
 
             btnChange.setOnClickListener {
@@ -91,7 +91,6 @@ class ConversionFragment : Fragment() {
             conversionCurrency(fieldFromCurrencyValue)
         }
     }
-
 
     private fun conversionCurrency(field: EditText) {
         field.addTextChangedListener(object : TextWatcher {
@@ -133,4 +132,13 @@ class ConversionFragment : Fragment() {
         }
         return tcv
     }
+
+    override fun onBackPressed() {
+        navigationController.popBackStack()
+    }
+
+    override fun onDestroy() {
+         super.onDestroy()
+         _binding = null
+     }
 }

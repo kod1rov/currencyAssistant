@@ -4,20 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.devcraft.currencyassistant.R
 import com.devcraft.currencyassistant.databinding.FragmentPostsBinding
 import com.devcraft.currencyassistant.entities.Post
+import com.devcraft.currencyassistant.utils.status.OnBackPressed
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NewsFragment : Fragment() {
+class NewsFragment : Fragment(), OnBackPressed {
 
     private var _binding : FragmentPostsBinding? = null
     private val binding get() = _binding!!
@@ -35,9 +34,8 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navigationController = Navigation.findNavController(view)
         initViews()
-        onBackPress()
         initListeners()
-        initStateListener()
+        getPostData()
     }
 
     override fun onCreateView(
@@ -48,9 +46,8 @@ class NewsFragment : Fragment() {
         return binding.root
     }
 
-    private fun initStateListener() {
+    private fun getPostData() {
         vm.postLiveData.observe(viewLifecycleOwner){
-            println(it)
             if(it.isNotEmpty()){
                 adapterNews.items = it as MutableList<Post>
             }
@@ -66,21 +63,13 @@ class NewsFragment : Fragment() {
     private fun initListeners() {
             binding.run {
                 btnBack.setOnClickListener {
-                    navigationController.navigate(
-                        R.id.action_newsFragment_to_mainFragment)
+                    navigationController.popBackStack()
                 }
             }
     }
 
-    private fun onBackPress() {
-        val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    navigationController.navigate(
-                        R.id.action_newsFragment_to_mainFragment,null,null)
-                }
-            }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    override fun onBackPressed() {
+        navigationController.popBackStack()
     }
 
     override fun onDestroy() {

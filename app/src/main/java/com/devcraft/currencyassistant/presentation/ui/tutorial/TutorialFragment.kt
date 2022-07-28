@@ -11,7 +11,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
-import com.devcraft.currencyassistant.R
 import com.devcraft.currencyassistant.constant.ArticleContent
 import com.devcraft.currencyassistant.databinding.FragmentTutorialBinding
 import com.devcraft.currencyassistant.utils.status.OnBackPressed
@@ -54,7 +53,7 @@ class TutorialFragment : Fragment(), OnBackPressed {
 
     private fun initListeners() {
         binding.btnBack.setOnClickListener {
-            navigationController.navigate(R.id.action_tutorialFragment_to_mainFragment, null, null)
+            navigationController.popBackStack()
         }
     }
 

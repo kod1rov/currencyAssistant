@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/publishedAt"
+        android:id="@+id/publishedTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
@@ -61,6 +61,6 @@
         android:layout_marginTop="10dp"
         android:alpha="0.1"
         android:background="@drawable/bottom_line_news_item"
-        app:layout_constraintTop_toBottomOf="@+id/publishedAt" />
+        app:layout_constraintTop_toBottomOf="@+id/publishedTime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

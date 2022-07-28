@@ -14,64 +14,48 @@
             android:id="@+id/action_mainFragment_to_tutorialFragment"
             app:destination="@id/tutorialFragment"
             app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_left" />
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_mainFragment_to_newsFragment"
             app:destination="@id/newsFragment"
             app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_left" />
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_mainFragment_to_chartCryptoFragment"
             app:destination="@id/chartCryptoFragment"
             app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_left" />
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_mainFragment_to_conversionFragment"
             app:destination="@id/conversionFragment"
             app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_left" />
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/tutorialFragment"
         android:name="com.devcraft.currencyassistant.presentation.ui.tutorial.TutorialFragment"
         android:label="TutorialFragment"
         app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_right">
-        <action
-            android:id="@+id/action_tutorialFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_right" />
-    </fragment>
+        app:exitAnim="@anim/slide_out_right" />
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.devcraft.currencyassistant.presentation.ui.news_fragment.NewsFragment"
-        android:label="NewsFragment" >
-        <action
-            android:id="@+id/action_newsFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_right" />
-    </fragment>
+        android:label="NewsFragment" />
     <fragment
         android:id="@+id/chartCryptoFragment"
         android:name="com.devcraft.currencyassistant.presentation.ui.chart_crypto.ChartCryptoFragment"
-        android:label="ChartCryptoFragment" >
-        <action
-            android:id="@+id/action_chartCryptoFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_right" />
-    </fragment>
+        android:label="ChartCryptoFragment" />
     <fragment
         android:id="@+id/conversionFragment"
         android:name="com.devcraft.currencyassistant.presentation.ui.conversion.ConversionFragment"
         android:label="fragment_conversion"
-        tools:layout="@layout/fragment_conversion" >
-        <action
-            android:id="@+id/action_conversionFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_right" />
-    </fragment>
+        tools:layout="@layout/fragment_conversion" />
 </navigation>

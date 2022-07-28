@@ -3,8 +3,6 @@ package com.devcraft.currencyassistant.presentation.ui.tutorial
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.currencyassistant.R
 import com.devcraft.currencyassistant.databinding.ItemTutorialBinding
