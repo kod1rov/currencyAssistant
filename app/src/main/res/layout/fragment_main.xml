@@ -128,9 +128,10 @@
     <FrameLayout
         android:id="@+id/bottom_sheet_list_crypto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_bottom_sheet_behavior"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -169,11 +170,13 @@
                     android:textSize="16sp"
                     tools:ignore="Autofill,LabelFor,TextFields" />
 
-                <ImageView
+                <ToggleButton
                     android:id="@+id/btnSortByPrice"
                     android:layout_width="20dp"
                     android:layout_height="14dp"
                     android:layout_marginStart="12dp"
+                    android:textOn=""
+                    android:textOff=""
                     android:background="@drawable/ic_filter_by_price"
                     tools:ignore="ContentDescription" />
 
@@ -183,7 +186,6 @@
                 android:id="@+id/rv_crypto_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
                 android:paddingHorizontal="16dp" />
 
         </LinearLayout>

@@ -49,6 +49,13 @@ class CurrencyAdapter : RecyclerView.Adapter<CurrencyAdapter.VH>() {
         notifyDataSetChanged()
     }
 
+    fun sortByRank(){
+        items.sortBy {
+            it.rank
+        }
+        notifyDataSetChanged()
+    }
+
     inner class VH(itemView: View, private val itemClick: OnClickListener) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
 

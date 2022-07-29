@@ -90,10 +90,11 @@ class MainFragment : Fragment() {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
             rvCryptoList.setOnTouchListener { v, event ->
-                bottomSheetListCrypto.isNestedScrollingEnabled = true
                 when (event.action) {
+                    MotionEvent.AXIS_VSCROLL ->
+                        v.parent.requestDisallowInterceptTouchEvent(false)
                     MotionEvent.ACTION_DOWN ->
-                        v.parent.requestDisallowInterceptTouchEvent(true)
+                        v.parent.requestDisallowInterceptTouchEvent(false)
                     MotionEvent.ACTION_UP ->
                         v.parent.requestDisallowInterceptTouchEvent(false)
                 }
@@ -137,8 +138,12 @@ class MainFragment : Fragment() {
                 navigationController.navigate(R.id.action_mainFragment_to_newsFragment)
             }
 
-            btnSortByPrice.setOnClickListener {
-                adapterCurrency.sortByPrice()
+            btnSortByPrice.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    adapterCurrency.sortByPrice()
+                } else {
+                    adapterCurrency.sortByRank()
+                }
             }
 
             searchCrypto(fieldSearch)
