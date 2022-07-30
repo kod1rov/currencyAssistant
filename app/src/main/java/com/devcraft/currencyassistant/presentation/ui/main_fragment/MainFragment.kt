@@ -57,12 +57,15 @@ class MainFragment : Fragment() {
         initListeners()
 
         currencyVM.currencyLiveData.observe(viewLifecycleOwner) {
-            if (it.isNotEmpty()) {
-                it.forEach { crypto ->
-                    listCrypto.add(crypto)
-                }
-                adapterCurrency.items = listCrypto
-            }
+            listCrypto.clear()
+            listCrypto.addAll(it)
+            adapterCurrency.items = listCrypto
+//            if (it.isNotEmpty()) {
+//                it.forEach { crypto ->
+//                    listCrypto.add(crypto)
+//                }
+//                adapterCurrency.items = listCrypto
+//            }
         }
 
         postVM.postLiveData.observe(viewLifecycleOwner) {
@@ -163,20 +166,33 @@ class MainFragment : Fragment() {
 
     private fun searchCrypto(field: EditText) {
         field.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {}
+            override fun afterTextChanged(s: Editable?) {
+                val str = s.toString()
+                if (str.isEmpty()) {
+                    adapterCurrency.items = listCrypto
+                } else {
+                    adapterCurrency.items = listCrypto.filter {
+                        it.name?.lowercase()?.contains(str) == true || it.symbol?.lowercase()?.contains(str) == true
+                    } as MutableList
+                }
+                adapterCurrency.notifyDataSetChanged()
+            }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             @SuppressLint("NotifyDataSetChanged")
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val str = field.text
-                if (str?.length == 0) {
-                    adapterCurrency.items = listCrypto
-                } else {
-                    adapterCurrency.items = listCrypto.filter {
-                        it.name!!.startsWith(s.toString(), true) || it.name.contains(s.toString(), true)
-                    } as MutableList
-                }
-                adapterCurrency.notifyDataSetChanged()
+//                val str = field.text
+//                if (str?.length == 0) {
+//                    adapterCurrency.items = listCrypto
+//                } else {
+////                    adapterCurrency.items = listCrypto.filter {
+////                        it.name!!.startsWith(s.toString(), true) || it.name.contains(s.toString(), true)
+////                    } as MutableList
+//                    adapterCurrency.items = listCrypto.filter {
+//                        it.name?.contains(s) == true
+//                    } as MutableList
+//                }
+//                adapterCurrency.notifyDataSetChanged()
             }
         })
     }
