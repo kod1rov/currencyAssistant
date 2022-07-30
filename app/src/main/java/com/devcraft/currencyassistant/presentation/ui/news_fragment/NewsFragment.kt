@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class NewsFragment : Fragment(), OnBackPressed {
 
-    private var _binding : FragmentPostsBinding? = null
+    private var _binding: FragmentPostsBinding? = null
     private val binding get() = _binding!!
     private lateinit var navigationController: NavController
 
@@ -47,8 +47,8 @@ class NewsFragment : Fragment(), OnBackPressed {
     }
 
     private fun getPostData() {
-        vm.postLiveData.observe(viewLifecycleOwner){
-            if(it.isNotEmpty()){
+        vm.postLiveData.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
                 adapterNews.items = it as MutableList<Post>
             }
         }
@@ -61,11 +61,11 @@ class NewsFragment : Fragment(), OnBackPressed {
     }
 
     private fun initListeners() {
-            binding.run {
-                btnBack.setOnClickListener {
-                    navigationController.popBackStack()
-                }
+        binding.run {
+            btnBack.setOnClickListener {
+                navigationController.popBackStack()
             }
+        }
     }
 
     override fun onBackPressed() {

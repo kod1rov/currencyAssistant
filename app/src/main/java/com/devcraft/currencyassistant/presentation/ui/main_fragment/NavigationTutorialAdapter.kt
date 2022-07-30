@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.currencyassistant.R
 import com.devcraft.currencyassistant.databinding.ItemNavTutorialBinding
 
-class NavigationTutorialAdapter:
-    RecyclerView.Adapter<NavigationTutorialAdapter.VH>(){
+class NavigationTutorialAdapter: RecyclerView.Adapter<NavigationTutorialAdapter.VH>(){
 
     private lateinit var listener: OnClickListener
 

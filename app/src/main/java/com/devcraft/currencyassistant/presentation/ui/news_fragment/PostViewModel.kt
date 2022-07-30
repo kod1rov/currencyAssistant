@@ -11,6 +11,7 @@ import com.devcraft.currencyassistant.data.remote.network.NetworkResult
 import com.devcraft.currencyassistant.domain.use_case.PostUseCase
 import com.devcraft.currencyassistant.entities.Post
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -22,11 +23,13 @@ class PostViewModel @Inject constructor(
     private val postDatabase: PostUseCase
 ) : ViewModel() {
 
-    private var _postLiveData = MutableLiveData<MutableList<Post>>(mutableListOf())
-    var postLiveData: LiveData<MutableList<Post>> = _postLiveData
+    private val _postLiveData = MutableLiveData<MutableList<Post>>(mutableListOf())
+    val postLiveData: LiveData<MutableList<Post>> = _postLiveData
+
+    private val dispatcherIO = Dispatchers.IO
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcherIO) {
             post.getPost().collect {
                 checkResult(it)
             }
@@ -35,7 +38,7 @@ class PostViewModel @Inject constructor(
     }
 
     private fun getPost() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcherIO) {
             postDatabase.getPost().also { posts ->
                 _postLiveData.postValue(posts as MutableList<Post>)
             }

@@ -38,7 +38,14 @@ class MainFragment : Fragment() {
     private val currencyVM by viewModels<MainViewModel>()
 
     private val adapterNews = PostAdapter()
-    private val adapterCurrency = CurrencyAdapter()
+    private val adapterCurrency = CurrencyAdapter { dataC ->
+        navigationController.navigate(
+            R.id.action_mainFragment_to_chartCryptoFragment,
+            bundleOf(
+                ChartCryptoFragment.dataC to "${dataC.id}, ${dataC.name}, ${dataC.priceUsd}, ${dataC.changePercent24Hr}"
+            )
+        )
+    }
     private val listCrypto: MutableList<Crypto> = mutableListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -103,7 +110,7 @@ class MainFragment : Fragment() {
             }
         }
         getPositionNavigate(adapterNavigationArticle)
-        getPositionCurrency(adapterCurrency)
+//        getPositionCurrency(adapterCurrency)
     }
 
     private fun getPositionNavigate(adapterNavigationArticle: NavigationTutorialAdapter) {
@@ -118,18 +125,18 @@ class MainFragment : Fragment() {
         })
     }
 
-    private fun getPositionCurrency(adapter: CurrencyAdapter) {
-        adapter.setOnItemClickListener(object : CurrencyAdapter.OnClickListener {
-            override fun onClick(dataC: Crypto) {
-                navigationController.navigate(
-                    R.id.action_mainFragment_to_chartCryptoFragment,
-                    bundleOf(
-                        ChartCryptoFragment.dataC to "${dataC.id}, ${dataC.name}, ${dataC.priceUsd}, ${dataC.changePercent24Hr}"
-                    )
-                )
-            }
-        })
-    }
+//    private fun getPositionCurrency(adapter: CurrencyAdapter) {
+//        adapter.setOnItemClickListener(object : CurrencyAdapter.OnClickListener {
+//            override fun onClick(dataC: Crypto) {
+//                navigationController.navigate(
+//                    R.id.action_mainFragment_to_chartCryptoFragment,
+//                    bundleOf(
+//                        ChartCryptoFragment.dataC to "${dataC.id}, ${dataC.name}, ${dataC.priceUsd}, ${dataC.changePercent24Hr}"
+//                    )
+//                )
+//            }
+//        })
+//    }
 
     private fun initListeners() {
         binding.run {

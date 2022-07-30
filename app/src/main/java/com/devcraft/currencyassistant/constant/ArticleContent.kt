@@ -2,6 +2,7 @@ package com.devcraft.currencyassistant.constant
 
 import android.annotation.SuppressLint
 import android.content.Context
+import androidx.core.content.ContextCompat
 import com.devcraft.currencyassistant.R
 import com.devcraft.currencyassistant.entities.Tutorial
 
@@ -43,7 +44,7 @@ class ArticleContent(ctx: Context) {
     @SuppressLint("UseCompatLoadingForDrawables")
     val article3: List<Tutorial> = arrayListOf(
         Tutorial(
-            ctx.resources.getString(R.string._3_trading_strategies_you_should),
+            ctx.getString(R.string._3_trading_strategies_you_should),
             ctx.resources.getDrawable(R.drawable.ic_articlethreefirst, null),
             ctx.resources.getString(R.string._3_trading_strategies_you_should_content)
         ),
