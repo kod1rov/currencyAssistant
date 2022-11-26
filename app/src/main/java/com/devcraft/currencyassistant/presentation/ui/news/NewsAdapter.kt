@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.devcraft.currencyassistant.presentation.ui.news_fragment
+package com.devcraft.currencyassistant.presentation.ui.news
 
 import android.annotation.SuppressLint
 import android.text.Html

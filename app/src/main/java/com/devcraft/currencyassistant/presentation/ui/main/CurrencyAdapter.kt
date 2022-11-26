@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.main_fragment
+package com.devcraft.currencyassistant.presentation.ui.main
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -59,10 +59,8 @@ class CurrencyAdapter(
         notifyDataSetChanged()
     }
 
-    class VH(
-        itemView: View,
-        private val onClickCrypto: (Crypto) -> Unit
-    ) : RecyclerView.ViewHolder(itemView) {
+    class VH(itemView: View, private val onClickCrypto: (Crypto) -> Unit) :
+        RecyclerView.ViewHolder(itemView) {
 
         private val binding = ItemCurrencyBinding.bind(itemView)
         private var data: Crypto? = null
@@ -83,6 +81,7 @@ class CurrencyAdapter(
             }
         }
 
+        @SuppressLint("SetTextI18n")
         private fun checkPercent(percent: Double) {
             if (percent < 0.0) {
                 binding.percentChange.text = String.format("%.2f", percent) + "%"
@@ -93,8 +92,7 @@ class CurrencyAdapter(
                     )
                 )
             } else {
-                binding.percentChange.text =
-                    "+" + String.format("%.2f", percent) + "%"
+                binding.percentChange.text = "+${String.format("%.2f", percent)}%"
                 binding.percentChange.setTextColor(
                     ContextCompat.getColor(
                         itemView.context,

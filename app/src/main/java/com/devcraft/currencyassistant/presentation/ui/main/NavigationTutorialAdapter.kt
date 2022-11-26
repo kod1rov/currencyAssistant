@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.main_fragment
+package com.devcraft.currencyassistant.presentation.ui.main
 
 import android.view.LayoutInflater
 import android.view.View

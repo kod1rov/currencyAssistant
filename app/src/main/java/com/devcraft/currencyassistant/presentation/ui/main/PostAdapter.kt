@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.main_fragment
+package com.devcraft.currencyassistant.presentation.ui.main
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.currencyassistant.R
-import com.devcraft.currencyassistant.databinding.ItemPostMoreBinding
 import com.devcraft.currencyassistant.entities.Post
 
 class PostAdapter : RecyclerView.Adapter<PostAdapter.NewsVH>() {

@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.news_fragment
+package com.devcraft.currencyassistant.presentation.ui.news
 
 import android.os.Bundle
 import android.view.LayoutInflater

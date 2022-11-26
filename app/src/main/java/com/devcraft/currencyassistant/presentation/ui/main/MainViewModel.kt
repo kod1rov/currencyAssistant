@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.main_fragment
+package com.devcraft.currencyassistant.presentation.ui.main
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -41,7 +41,6 @@ class MainViewModel @Inject constructor(
              }
          }
     }
-
 
     private suspend fun checkResult(result: NetworkResult<CurrencyResponse>) {
         when (result) {

@@ -94,6 +94,7 @@
                             style="@style/AutoCompTVCustom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:maxLength="6"
                             android:text="@string/btc"
                             tools:ignore="LabelFor" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -163,12 +164,13 @@
                             style="@style/AutoCompTVCustom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:maxLength="6"
                             android:text="@string/eth"
                             tools:ignore="LabelFor" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/fieldToCurrencyValue"
                         style="@style/FieldCurrencyValueCustom"
                         android:layout_width="0dp"
@@ -176,8 +178,7 @@
                         android:layout_weight="1"
                         android:paddingHorizontal="22dp"
                         android:paddingVertical="10dp"
-                        android:text="@string/startValueForFieldConvert"
-                        tools:ignore="Autofill,LabelFor" />
+                        android:text="@string/startValueForFieldConvert" />
 
                 </LinearLayout>
             </LinearLayout>

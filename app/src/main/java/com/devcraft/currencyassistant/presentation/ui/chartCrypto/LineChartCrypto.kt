@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.chart_crypto
+package com.devcraft.currencyassistant.presentation.ui.chartCrypto
 
 import android.content.Context
 import androidx.core.content.ContextCompat

@@ -15,7 +15,7 @@
         android:theme="@style/Theme.СurrencyAssistant">
 
         <activity
-            android:name=".presentation.ui.splash_screen.SplashScreen"
+            android:name=".presentation.ui.splashScreen.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

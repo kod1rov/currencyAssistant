@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
@@ -121,6 +123,7 @@ dependencies {
     kapt "androidx.room:room-compiler:2.4.2"
     implementation "androidx.room:room-ktx:2.4.2"
 
+    implementation "org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.6.21"
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 }

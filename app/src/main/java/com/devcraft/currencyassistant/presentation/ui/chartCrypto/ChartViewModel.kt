@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.chart_crypto
+package com.devcraft.currencyassistant.presentation.ui.chartCrypto
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -22,9 +22,9 @@ class ChartViewModel @Inject constructor(
     private var _historyLiveData = MutableLiveData<MutableList<DataHistory>>(mutableListOf())
     var historyLiveData: LiveData<MutableList<DataHistory>> = _historyLiveData
 
-    fun getHistoryCrypto(id: String, filter: Int) {
+    fun getHistoryCrypto(id: String?, filter: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            currencyHistoryImpl.getCurrencyHistory(id, filter).collect {
+            currencyHistoryImpl.getCurrencyHistory(id.toString(), filter).collect {
                 when (it) {
                     is NetworkResult.ApiError -> {
                         Log.d("ERROR", it.message)

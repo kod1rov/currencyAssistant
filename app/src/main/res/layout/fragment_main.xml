@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_main_color"
-    tools:context="com.devcraft.currencyassistant.presentation.ui.main_fragment.MainFragment">
+    tools:context="com.devcraft.currencyassistant.presentation.ui.main.MainFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -140,8 +140,8 @@
             tools:ignore="UselessParent">
 
             <ImageView
-                android:layout_width="62dp"
-                android:layout_height="3dp"
+                android:layout_width="72dp"
+                android:layout_height="6dp"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="34dp"

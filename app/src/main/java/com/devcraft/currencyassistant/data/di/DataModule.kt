@@ -39,11 +39,9 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideCryptoDatabase(app: Application): CurrencyDatabase = Room.databaseBuilder(
-        app,
-        CurrencyDatabase::class.java,
-        CurrencyDatabase.DATABASE_NAME
-    ).build()
+    fun provideCryptoDatabase(app: Application): CurrencyDatabase =
+        Room.databaseBuilder(app, CurrencyDatabase::class.java, CurrencyDatabase.DATABASE_NAME)
+            .build()
 
     @Provides
     @Singleton

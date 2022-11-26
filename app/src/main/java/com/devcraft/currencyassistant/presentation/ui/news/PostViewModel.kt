@@ -1,4 +1,4 @@
-package com.devcraft.currencyassistant.presentation.ui.news_fragment
+package com.devcraft.currencyassistant.presentation.ui.news
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -11,7 +11,6 @@ import com.devcraft.currencyassistant.data.remote.network.NetworkResult
 import com.devcraft.currencyassistant.domain.use_case.PostUseCase
 import com.devcraft.currencyassistant.entities.Post
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

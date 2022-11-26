@@ -1,48 +1,38 @@
-package com.devcraft.currencyassistant.presentation.ui.chart_crypto
+package com.devcraft.currencyassistant.presentation.ui.chartCrypto
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
+import com.devcraft.currencyassistant.BaseFragment
 import com.devcraft.currencyassistant.R
 import com.devcraft.currencyassistant.data.remote.dto.DataHistory
 import com.devcraft.currencyassistant.databinding.FragmentChartCryptoBinding
-import com.devcraft.currencyassistant.utils.status.OnBackPressed
 import com.github.mikephil.charting.data.Entry
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ChartCryptoFragment : Fragment(), OnBackPressed {
-
-    private var _binding: FragmentChartCryptoBinding? = null
-    private val binding get() = _binding!!
-    private lateinit var navigationController: NavController
+class ChartCryptoFragment : BaseFragment<FragmentChartCryptoBinding>(FragmentChartCryptoBinding::inflate) {
 
     private val vm by viewModels<ChartViewModel>()
     private lateinit var lineList: ArrayList<Entry>
     private lateinit var chart: LineChartCrypto
-    private lateinit var list: List<String>
+
+    private val args: ChartCryptoFragmentArgs by navArgs()
 
     private lateinit var adapterFilter: ArrayAdapter<CharSequence>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navigationController = Navigation.findNavController(view)
-        list = arguments?.getString(dataC)!!.split(",")
-
         initViews()
         initListeners()
     }
 
     private fun getData(filter: Int) {
-        vm.getHistoryCrypto(list[0], filter)
+        vm.getHistoryCrypto(args.dataChart?.id, filter)
 
         vm.historyLiveData.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
@@ -52,12 +42,12 @@ class ChartCryptoFragment : Fragment(), OnBackPressed {
     }
 
     private fun initViews() {
-        binding.run {
-            nameCurrency.text = list[1]
-            valueCurrency.text = "$" + String.format("%.2f", list[2].toDouble())
+        binding?.run {
+            nameCurrency.text = args.dataChart?.name
+            valueCurrency.text = "$" + String.format("%.2f", args.dataChart?.priceUsd)
 
-            if (list[3].toDouble() < 0.0) {
-                percentChange.text = String.format("%.2f", list[3].toDouble()) + "%"
+            if (args.dataChart?.changePercent24Hr!! < 0.0) {
+                percentChange.text = String.format("%.2f", args.dataChart?.changePercent24Hr) + "%"
                 percentChange.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
@@ -66,7 +56,7 @@ class ChartCryptoFragment : Fragment(), OnBackPressed {
                 )
             } else {
                 percentChange.text =
-                    "+" + String.format("%.2f", list[3].toDouble()) + "%"
+                    "+" + String.format("%.2f", args.dataChart?.changePercent24Hr) + "%"
                 percentChange.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
@@ -90,19 +80,18 @@ class ChartCryptoFragment : Fragment(), OnBackPressed {
             lineList.add(Entry(it.time.toFloat(), it.priceUsd))
         }
 
-        chart = LineChartCrypto(binding.lineChart, requireContext())
+        chart = LineChartCrypto(binding!!.lineChart, requireContext())
         chart.initLineDataSet(lineList)
         chart.setLineData()
         chart.initLineChart()
     }
 
     private fun initListeners() {
-        binding.run {
+        binding?.run {
             btnBack.setOnClickListener {
-                navigationController.popBackStack()
+                onBackPressed()
             }
-            filterDropDownMenu.onItemSelectedListener =
-                object : AdapterView.OnItemSelectedListener {
+            filterDropDownMenu.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
                         parent: AdapterView<*>,
                         view: View,
@@ -110,19 +99,19 @@ class ChartCryptoFragment : Fragment(), OnBackPressed {
                         id: Long
                     ) {
                         when (pos) {
-                            0 -> {
+                            TO_DAY -> {
                                 getData(-3)
                                 filterTV.text = parent.getItemAtPosition(pos).toString()
                             }
-                            1 -> {
+                            WEEK -> {
                                 getData(-9)
                                 filterTV.text = parent.getItemAtPosition(pos).toString()
                             }
-                            2 -> {
+                            MONTH -> {
                                 getData(-30)
                                 filterTV.text = parent.getItemAtPosition(pos).toString()
                             }
-                            3 -> {
+                            YEAR -> {
                                 getData(-365)
                                 filterTV.text = parent.getItemAtPosition(pos).toString()
                             }
@@ -133,25 +122,10 @@ class ChartCryptoFragment : Fragment(), OnBackPressed {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentChartCryptoBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
-    override fun onBackPressed() {
-        navigationController.popBackStack()
-    }
-
     companion object {
-        const val dataC: String = ""
+        const val TO_DAY = 0
+        const val WEEK = 1
+        const val MONTH = 2
+        const val YEAR = 3
     }
-
 }

@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onBackPressed() {
         val currentFragment: Fragment = supportFragmentManager.fragments[0] ?: return
-        val controller = Navigation.findNavController(this, R.id.main_fragment)
+        val controller = Navigation.findNavController(this, R.id.nav_host_fragment)
         if (currentFragment is OnBackPressed) (currentFragment as OnBackPressed).onBackPressed()
         else if (!controller.popBackStack()) finish()
     }

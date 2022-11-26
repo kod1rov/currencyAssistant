@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.devcraft.currencyassistant.presentation.ui.main_fragment.MainFragment"
+        android:name="com.devcraft.currencyassistant.presentation.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -44,15 +44,27 @@
         android:name="com.devcraft.currencyassistant.presentation.ui.tutorial.TutorialFragment"
         android:label="TutorialFragment"
         app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_right" />
+        app:exitAnim="@anim/slide_out_right">
+
+        <argument
+            android:name="articleId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.devcraft.currencyassistant.presentation.ui.news_fragment.NewsFragment"
+        android:name="com.devcraft.currencyassistant.presentation.ui.news.NewsFragment"
         android:label="NewsFragment" />
     <fragment
         android:id="@+id/chartCryptoFragment"
-        android:name="com.devcraft.currencyassistant.presentation.ui.chart_crypto.ChartCryptoFragment"
-        android:label="ChartCryptoFragment" />
+        android:name="com.devcraft.currencyassistant.presentation.ui.chartCrypto.ChartCryptoFragment"
+        android:label="ChartCryptoFragment">
+
+        <argument
+            android:name="dataChart"
+            android:defaultValue="@null"
+            app:argType="com.devcraft.currencyassistant.data.model.ChartModel"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/conversionFragment"
         android:name="com.devcraft.currencyassistant.presentation.ui.conversion.ConversionFragment"
